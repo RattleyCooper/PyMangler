@@ -1,6 +1,6 @@
-# PyMangler
+# PyMangler for Python 3
 
-PyMangler contains a pure-python "encryption" scheme 
+PyMangler contains a pure-python3 "encryption" scheme 
 that can be used to *obfuscate* and *disguise* data
 in situations where strong encryption is not available,
 and security is not necessarily top priority.  It is 
@@ -18,7 +18,7 @@ B.) Could withstand a frequency analysis attack
 
 ### Install
 
-    pip install PyMangler
+    pip3 install PyMangler
 
 ### Setup
 
