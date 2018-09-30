@@ -3,7 +3,8 @@
 PyMangler contains a pure-python "encryption" scheme 
 that can be used to *obfuscate* and *disguise* data
 in situations where strong encryption is not available,
-and security is not necessarily top priority.
+and security is not necessarily top priority.  It is 
+fairly fast but large amounts of data takes time.
 
 ### Install
 
@@ -21,7 +22,9 @@ text and a file named `key` will be generated:
     Validating key for prosperity...
     Key is valid.  Encryptor working successfully!
 
-A key should never fail, but it's validated anyway.
+Key validation from the built in key generator 
+should realistically never fail, but it's validated 
+anyway.
 
 PyMangler's encryption algorithm was designed to give 
 a fairly flat distribution frequency, and repeating 
