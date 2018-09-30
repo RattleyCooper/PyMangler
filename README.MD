@@ -4,7 +4,17 @@ PyMangler contains a pure-python "encryption" scheme
 that can be used to *obfuscate* and *disguise* data
 in situations where strong encryption is not available,
 and security is not necessarily top priority.  It is 
-fairly fast but large amounts of data takes time.
+fairly fast but large amounts of data takes time. 
+Files can be encrypted if the file data is encoded to
+base64 before encrypting but it's too slow to be useful.
+
+This was written as a "proof of concept" because I 
+was wondering if I could come up with an encryption 
+scheme that 
+
+A.) Didn't produce repeating patterns
+
+B.) Could withstand a frequency analysis attack
 
 ### Install
 
@@ -29,8 +39,7 @@ anyway.
 PyMangler's encryption algorithm was designed to give 
 a fairly flat distribution frequency, and repeating 
 patterns in pre-encrypted text does not generate 
-repeating cipher-text that would give any indication
-of a pattern.
+repeating patterns in the cipher-text once encrypted.
 
     hello hello hello hello hello hello hello hello
     ̬ĮʀÀ
