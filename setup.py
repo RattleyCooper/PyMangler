@@ -5,10 +5,10 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="PyMangler",
-    version="0.0.1",
+    version="0.0.2",
     author="py-am-i",
     author_email="duckpuncherirl@gmail.com",
-    description="PyMangler contains a pure-python \"encryption\" scheme that can be used to *obfuscate* and *disguise* datain situations where strong encryption is not available,and security is not necessarily top priority.",
+    description="PyMangler contains a pure-python \"encryption\" scheme that can be used to *obfuscate* and *disguise* data in situations where strong encryption is not available,and security is not necessarily top priority.",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/Wykleph/PyMangler",
