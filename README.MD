@@ -39,7 +39,9 @@ anyway.
 PyMangler's encryption algorithm was designed to give 
 a fairly flat distribution frequency, and repeating 
 patterns in pre-encrypted text does not generate 
-repeating patterns in the cipher-text once encrypted.
+repeating patterns in the cipher-text unless you
+were to repeat the same characters an abnormal amount
+of times in the pre-encrypted text.
 
     hello hello hello hello hello hello hello hello
     ̬ĮʀÀ

@@ -15,7 +15,7 @@ from random import SystemRandom
 
 
 class Encryptor(object):
-    def __init__(self, characters=None, backlog=-1):
+    def __init__(self, characters=None, mix=-1):
         self.random = SystemRandom()
         if characters is None:
             unicode_chars = [chr(i) for i in range(1, 1028)]
@@ -23,13 +23,15 @@ class Encryptor(object):
             self.characters.remove('\r')
             self.characters.remove('\f')
             self.random.shuffle(self.characters)
+            self.random.shuffle(self.characters)
+            self.random.shuffle(self.characters)
 
         self.rev_ord = {}
         self.ord = {}
 
         self.range = len(self.characters)
         self.make_key(self.characters)
-        self.mix = backlog
+        self.mix = mix
 
     def load_key_file(self, filepath='key'):
         with open(filepath, 'r') as f:
@@ -45,6 +47,9 @@ class Encryptor(object):
 
     def make_randomized_key(self, characters):
         self.random.shuffle(characters)
+        self.random.shuffle(self.characters)
+        self.random.shuffle(self.characters)
+
         return self.make_key(characters)
 
     def make_key(self, characters):
@@ -111,6 +116,7 @@ class Encryptor(object):
         mix = 0
         for i, c in enumerate(string):
             increase = sum([self.ord[x] for x in string[:i][self.mix:]])
+
             c_ord = self.increment(self.ord[c], increase + mix)
             mix += increase
             if i == 0:
@@ -146,6 +152,7 @@ class Encryptor(object):
         mix = 0
         for i, c in enumerate(string):
             increase = sum([self.ord[x] for x in output[:i][self.mix:]])
+
             c_ord = self.decrement(self.ord[c], increase + mix)
             mix += increase
 
@@ -157,9 +164,32 @@ class Encryptor(object):
                 out = self.rev_ord[out_ord]
 
             output += out
-            first_letter_ord = self.ord[out]
+            # first_letter_ord = self.ord[out] if flip else self.ord[string[i-1]]
 
         return output
 
+
+if __name__ == '__main__':
+    def main():
+        s = Encryptor().load_key_file()
+        m = """The quick red fox jumped over the lazy dog."""
+        en = s.encrypt(m)
+        de = s.decrypt(en)
+
+        if de != m:
+            print('key:', ''.join(s.characters))
+            print('\nstring: {}'.format(len(m)), m)
+            print('\nencrypted:', en)
+            print('\ndecrypted:', de)
+
+            raise Exception('Decrypted text did not match the encrypted string.  Something went wrong.')
+
+        print('key:', ''.join(s.characters))
+        print('\nstring: {}'.format(len(m)), m)
+        print('\nencrypted:', en)
+        print('\ndecrypted:', de)
+        print('Key is valid.  Encryptor working successfully!')
+
+    main()
 
 
